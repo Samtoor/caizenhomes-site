@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caizen Homes | Coming Soon</title>
+<meta name="description" content="Caizen Homes. Our new website is coming soon.">
+<meta name="theme-color" content="#0b0a0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0a0d;
+    --text: #f2f0f5;
+    --muted: #b8b4c2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Jost", "Helvetica Neue", Arial, sans-serif;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+  @supports (height: 100svh) { body { min-height: 100svh; } }
+
+  canvas#waves {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+  }
+  .vignette {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 80%, rgba(11,10,13,0.75) 0%, rgba(11,10,13,0) 55%),
+      linear-gradient(180deg, rgba(11,10,13,0.35) 0%, rgba(11,10,13,0) 25%, rgba(11,10,13,0) 70%, rgba(11,10,13,0.6) 100%);
+  }
+
+  .page {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(28px + env(safe-area-inset-top)) clamp(20px, 5vw, 56px) 0;
+  }
+  .brand {
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+  }
+  .launch {
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px clamp(56px, 12vh, 120px);
+  }
+  .eyebrow {
+    font-weight: 300;
+    font-size: clamp(11px, 1.3vw, 14px);
+    letter-spacing: 0.32em;
+    margin-right: -0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    animation: rise 1.2s ease forwards 0.4s;
+  }
+  h1 {
+    font-weight: 200;
+    font-size: clamp(44px, 6.4vw, 84px);
+    line-height: 1.12;
+    letter-spacing: 0.16em;
+    margin-right: -0.16em;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  h1 span {
+    display: block;
+    opacity: 0;
+    animation: rise 1.4s ease forwards;
+  }
+  h1 span:nth-child(1) { animation-delay: 0.7s; }
+  h1 span:nth-child(2) { animation-delay: 1s; }
+  .tuned {
+    font-weight: 300;
+    font-size: clamp(11px, 1.3vw, 14px);
+    letter-spacing: 0.32em;
+    margin-right: -0.32em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 18px;
+    opacity: 0;
+    animation: rise 1.2s ease forwards 1.4s;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    padding: 0 16px calc(22px + env(safe-area-inset-bottom));
+    opacity: 0.8;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  @media (max-width: 600px) {
+    header { justify-content: center; padding-top: calc(26px + env(safe-area-inset-top)); }
+    .brand { font-size: 13px; letter-spacing: 0.34em; margin-right: -0.34em; }
+    .launch { display: none; }
+    h1 { font-size: clamp(38px, 12.5vw, 56px); letter-spacing: 0.12em; margin-right: -0.12em; }
+    main { padding-bottom: 72px; }
+    footer .sep { display: none; }
+    footer .loc { display: block; margin-top: 4px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eyebrow, h1 span, .tuned { animation: none; opacity: 1; }
+  }
+</style>
+</head>
+<body>
+  <canvas id="waves" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="page">
+    <header>
+      <div class="brand">Caizen Homes</div>
+      <div class="launch">Launching soon</div>
+    </header>
+
+    <main>
+      <p class="eyebrow">Our new website is</p>
+      <h1><span>Coming</span><span>Soon</span></h1>
+      <p class="tuned">Stay tuned</p>
+    </main>
+
+    <footer>&copy; 2026 CaizenX Homes Ltd.<span class="sep"> &nbsp;|&nbsp; </span><span class="loc">Surrey, British Columbia</span></footer>
+  </div>
+
+<script>
+(function () {
+  var canvas = document.getElementById("waves");
+  var ctx = canvas.getContext("2d");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var w = 0, h = 0, dpr = 1, mobile = false;
+
+  // Each ribbon is a bundle of fine lines that twist and fan out
+  var ribbons = [
+    { y: 0.36, amp: 0.20, freq: 1.6, speed: 0.00028, phase: 0.0, spread: 0.22, colors: ["#2f6bff", "#8a3dff", "#ff2d6f"] },
+    { y: 0.42, amp: 0.15, freq: 2.1, speed: 0.00022, phase: 2.1, spread: 0.17, colors: ["#ff2d55", "#c13cff", "#36b4ff"] },
+    { y: 0.32, amp: 0.12, freq: 1.2, speed: 0.00018, phase: 4.0, spread: 0.14, colors: ["#5b3dff", "#ff3dd2", "#ff5a36"] }
+  ];
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    mobile = w < 600;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw(time) {
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "#0b0a0d";
+    ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = "lighter";
+
+    var lines = mobile ? 34 : 60;
+    var step = mobile ? 8 : 6;
+
+    for (var r = 0; r < ribbons.length; r++) {
+      var rb = ribbons[r];
+      var t = time * rb.speed;
+      var grad = ctx.createLinearGradient(0, 0, w, 0);
+      grad.addColorStop(0, rb.colors[0]);
+      grad.addColorStop(0.5, rb.colors[1]);
+      grad.addColorStop(1, rb.colors[2]);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = mobile ? 0.7 : 0.6;
+
+      for (var i = 0; i < lines; i++) {
+        var k = i / (lines - 1) - 0.5;
+        ctx.globalAlpha = 0.14 + 0.28 * (1 - Math.abs(k) * 2);
+        ctx.beginPath();
+        for (var x = -20; x <= w + 20; x += step) {
+          var nx = x / w;
+          var main = Math.sin(nx * Math.PI * rb.freq + t + rb.phase) * rb.amp
+                   + Math.sin(nx * Math.PI * rb.freq * 0.5 - t * 1.3 + rb.phase) * rb.amp * 0.5;
+          var twist = Math.sin(nx * Math.PI * 2.2 + t * 1.7 + rb.phase * 1.3);
+          var y = (rb.y + main + k * rb.spread * twist) * h;
+          if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  var running = true;
+  function loop(time) {
+    if (!running) return;
+    draw(time);
+    requestAnimationFrame(loop);
+  }
+
+  resize();
+  window.addEventListener("resize", function () { resize(); if (reduce) draw(4000); });
+  document.addEventListener("visibilitychange", function () {
+    if (reduce) return;
+    if (document.hidden) { running = false; }
+    else if (!running) { running = true; requestAnimationFrame(loop); }
+  });
+
+  if (reduce) { draw(4000); } else { requestAnimationFrame(loop); }
+})();
+</script>
+</body>
+</html>
